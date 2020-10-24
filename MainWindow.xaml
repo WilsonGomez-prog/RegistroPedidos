@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistroPedidos"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Registro de pedidos" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
+        <StackPanel>
+            <Menu>
+                <MenuItem Header="Registro">
+                    <MenuItem x:Name="rOrdenesMenuItem" Header="Registro de Ordenes" Click="rOrdenesMenuItem_Click"/>
+                </MenuItem>
 
+                <MenuItem Header="Consulta">
+                    <MenuItem x:Name="cOrdenesMenuItem" Header="Consulta de Ordenes" Click="cOrdenesMenuItem_Click"/>
+                    <MenuItem x:Name="cSuplidoresMenuItem" Header="Consulta de Suplidores" Click="cSuplidoresMenuItem_Click"/>
+                    <MenuItem x:Name="cProductosMenuItem" Header="Consulta de Productos" Click="cProductosMenuItem_Click"/>
+                </MenuItem>
+
+                <MenuItem Header="Ayuda.">
+                    <Menu/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
     </Grid>
 </Window>

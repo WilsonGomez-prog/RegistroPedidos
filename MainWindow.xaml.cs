@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RegistroPedidos.UI.Consultas;
+using RegistroPedidos.UI.Registro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,30 @@ namespace RegistroPedidos
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void rOrdenesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rOrdenes ventanaOrdenes = new rOrdenes();
+            ventanaOrdenes.Show();
+        }
+
+        private void cOrdenesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cOrdenes consultaOrdenes = new cOrdenes();
+            consultaOrdenes.Show();
+        }
+
+        private void cSuplidoresMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cSuplidores consultaSuplidores = new cSuplidores();
+            consultaSuplidores.Show();
+        }
+
+        private void cProductosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cProductos consultaProductos = new cProductos();
+            consultaProductos.Show();
         }
     }
 }

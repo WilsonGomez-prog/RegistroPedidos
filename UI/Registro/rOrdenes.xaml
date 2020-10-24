@@ -1,0 +1,105 @@
+﻿<Window x:Class="RegistroPedidos.UI.Registro.rOrdenes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegistroPedidos.UI.Registro"
+        mc:Ignorable="d"
+        Title="Registro de Órdenes" Height="700" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel>
+            <!--OrdenId-->
+            <Label Content="Orden ID:" FontSize="15" Height="30" Width="80" Margin="-455, 20, 0, 0"/>
+            <TextBox x:Name="OrdenIdTextBox" Text="{Binding OrdenId}" Height="25" Width="75" Margin="-300, -25, 0, 0"/>
+            <Button x:Name="BuscarButton" Height="25" Width="75" Margin="0, -25, 0, 0" Click="BuscarButton_Click">
+                <DockPanel>
+                    <TextBlock Margin="-5, 0, 0, 0"> Buscar</TextBlock>
+                    <Image Source = "/Imagenes/search_icon.png" Height="20" Margin="5,0,0,0"/>
+                </DockPanel>
+            </Button>
+
+            <!--Fecha-->
+            <Label Content="Fecha:" FontSize="15" Height="30" Width="70" Margin="-465, 10, 0, 0"/>
+            <DatePicker x:Name="FechaDatePicker" Text="{Binding Fecha}" Height="25" Width="160" Margin="-365, 0, 0, 0"/>
+
+            <!--Suplidor-->
+            <Label Content="Suplidor:" FontSize="15" Height="30" Width="87" Margin="0, -80, 0, 0"/>
+            <ComboBox x:Name="SuplidorIdComboBox" Text="{Binding SuplidorId}" Height="25" Width="160" Margin="85, -25, 0, 0"/>
+
+
+
+            <StackPanel Margin="0,10,0,0">
+                <GroupBox Header="Detalle de la orden.">
+                    <StackPanel>
+                        <!--ProductoId-->
+                        <Label Content="Producto:" FontSize="15" Height="30" Width="87" Margin="-450, 0, 0, 0"/>
+                        <ComboBox x:Name="ProductoIdComboBox" Text="{Binding DetalleOrden.ProductoId}" Height="25" Width="160" Margin="-365, 0, 0, 0"/>
+
+                        <!--Cantidad-->
+                        <Label Content="Cantidad:" FontSize="15" Height="30" Width="75" Margin="0, -80, 0, 0"/>
+                        <TextBox x:Name="CantidadTextBox" Text="{Binding DetalleOrden.Cantidad}" Height="25" Width="160" Margin="100, -25, 0, 0"/>
+
+                        <Button x:Name="AgregarButton" Height="30" Width="75" Margin="415,-25,0,0" Click="AgregarButton_Click">
+                            <DockPanel>
+                                <TextBlock Margin="0, 3, 0, 0"> Agregar</TextBlock>
+                                <Image Source = "/Imagenes/add_icon.png" Height="23" Margin="5,-2,0,0"/>
+                            </DockPanel>
+                        </Button>
+
+                        <!--DetallesDataGrid-->
+                        <StackPanel Margin="0,20,0,0">
+                            
+                            <DataGrid x:Name="DetallesDataGrid" ItemsSource="{Binding DetalleOrden}" AutoGenerateColumns="False" Height="300" Width="550" IsReadOnly="True" HorizontalAlignment="Center">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                                    <DataGridTextColumn Header="ID Orden" Binding="{Binding OrdenId}" Width="*"/>
+                                    <DataGridTextColumn Header="ID Artículo" Binding="{Binding ProductoId}" Width="*"/>
+                                    <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" Width="*"/>
+                                    <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*"/>
+                                    <DataGridTextColumn Header="Sub-Total" Binding="{Binding Costo}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            
+            <!--Monto-->
+            <Label Content="Monto:" FontSize="15" Height="30" Width="75" Margin="200, 0, 0, 0"/>
+            <TextBox x:Name="MontoTextBox" Text="{Binding Monto}" Height="25" Width="150" Margin="400, -25, 0, 0" IsReadOnly="True"/>
+
+            <!--Botones-->
+            <Button x:Name="RemoverButton" Height="35" Width="80" Margin="0,-25,0,0" Click="RemoverButton_Click">
+                <DockPanel>
+                    <TextBlock Margin="0, 3, 0, 0"> Remover</TextBlock>
+                    <Image Source = "/Imagenes/remove_icon.png" Height="30" Margin="5,-2,0,0" Width="22"/>
+                </DockPanel>
+            </Button>
+
+            <StackPanel HorizontalAlignment="Center" Margin="50,15,0,0">
+                <Button x:Name="NuevoButton" Height="40" Width="85" Margin="-300, 15, 0, 0" Click="NuevoButton_Click">
+                    <DockPanel>
+                        <TextBlock Margin="-5, 3, 0, 0"> Nuevo</TextBlock>
+                        <Image Source = "/Imagenes/new_icon.png" Height="25" Margin="5,0,0,0"/>
+                    </DockPanel>
+                </Button>
+
+                <Button x:Name="GuardarButton" Height="40" Width="85" Margin="-50, -40, 0, 0" Click="GuardarButton_Click">
+                    <DockPanel>
+                        <TextBlock Margin="-5, 3, 0, 0"> Guardar</TextBlock>
+                        <Image Source = "/Imagenes/save_icon.png" Height="25" Margin="5,0,0,0"/>
+                    </DockPanel>
+                </Button>
+
+                <Button x:Name="EliminarButton" Height="40" Width="85" Margin="200, -40, 0, 0" Click="EliminarButton_Click" >
+                    <DockPanel>
+                        <TextBlock Margin="-5, 3, 0, 0"> Eliminar</TextBlock>
+                        <Image Source = "/Imagenes/delete_icon.png" Height="25" Margin="5,0,0,0"/>
+                    </DockPanel>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>
