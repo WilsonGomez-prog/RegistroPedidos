@@ -8,6 +8,7 @@ namespace RegistroPedidos.DAL
         public DbSet<Ordenes> Ordenes { get; set; }
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Suplidores> Suplidores { get; set; }
+        public DbSet<Ventas> Ventas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

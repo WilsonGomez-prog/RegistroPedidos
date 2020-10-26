@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Controls;
 
-namespace Prestamos_Tarea3.Validacion
+namespace RegistroPedidos.Validacion
 {
     public class ValidacionFecha : ValidationRule
     {

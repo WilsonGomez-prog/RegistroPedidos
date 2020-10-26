@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistroPedidos.UI.Registro"
+        xmlns:m="clr-namespace:RegistroPedidos.Validacion"
         mc:Ignorable="d"
         Title="Registro de Órdenes" Height="700" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -20,7 +21,15 @@
 
             <!--Fecha-->
             <Label Content="Fecha:" FontSize="15" Height="30" Width="70" Margin="-465, 10, 0, 0"/>
-            <DatePicker x:Name="FechaDatePicker" Text="{Binding Fecha}" Height="25" Width="160" Margin="-365, 0, 0, 0"/>
+            <DatePicker x:Name="FechaDatePicker" Text="{Binding Fecha}" Height="25" Width="160" Margin="-365, 0, 0, 0">
+            <DatePicker.SelectedDate>
+                    <Binding Path="Fecha" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <m:ValidacionFecha x:Name="validacionfecha" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
 
             <!--Suplidor-->
             <Label Content="Suplidor:" FontSize="15" Height="30" Width="87" Margin="0, -80, 0, 0"/>
@@ -37,7 +46,13 @@
 
                         <!--Cantidad-->
                         <Label Content="Cantidad:" FontSize="15" Height="30" Width="75" Margin="0, -80, 0, 0"/>
-                        <TextBox x:Name="CantidadTextBox" Text="{Binding DetalleOrden.Cantidad}" Height="25" Width="160" Margin="100, -25, 0, 0"/>
+                        <TextBox x:Name="CantidadTextBox" Height="25" Width="160" Margin="100, -25, 0, 0">
+                        <Binding Path="DetalleOrden.Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <m:ValidacionMonto x:Name="validacionCantidad" ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox>
 
                         <Button x:Name="AgregarButton" Height="30" Width="75" Margin="415,-25,0,0" Click="AgregarButton_Click">
                             <DockPanel>

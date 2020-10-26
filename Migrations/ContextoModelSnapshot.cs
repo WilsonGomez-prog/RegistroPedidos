@@ -216,6 +216,48 @@ namespace RegistroPedidos.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RegistroPedidos.Entidades.Ventas", b =>
+                {
+                    b.Property<int>("VentaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Monto")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("VentaId");
+
+                    b.ToTable("Ventas");
+                });
+
+            modelBuilder.Entity("RegistroPedidos.Entidades.VentasDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Precio")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("VentaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("VentasId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VentasId");
+
+                    b.ToTable("VentasDetalle");
+                });
+
             modelBuilder.Entity("RegistroPedidos.Entidades.OrdenesDetalle", b =>
                 {
                     b.HasOne("RegistroPedidos.Entidades.Ordenes", null)
@@ -223,6 +265,13 @@ namespace RegistroPedidos.Migrations
                         .HasForeignKey("OrdenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RegistroPedidos.Entidades.VentasDetalle", b =>
+                {
+                    b.HasOne("RegistroPedidos.Entidades.Ventas", null)
+                        .WithMany("DetalleVentas")
+                        .HasForeignKey("VentasId");
                 });
 #pragma warning restore 612, 618
         }
